@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- === GLOBAL SEO AYARLARI === -->
+    <title>INOVI TECH | Future Architects</title>
+    
+    <!-- Çift Dilli Açıklama (SEO İçin Kritik) -->
+    <meta name="description" content="INOVI TECH; Yapay zeka destekli yazılım, siber güvenlik ve multi-platform çözümler sunar. | AI-powered software, cyber security, and multi-platform solutions based in Turkey.">
+    
+    <!-- Genişletilmiş Anahtar Kelimeler -->
+    <meta name="keywords" content="Inovi Tech, Yazılım Şirketi, Siber Güvenlik, Yapay Zeka, Cyber Security, AI Development, Web Design, Mobile Apps, Penetration Testing, Ethical Hacking, DevSecOps, Istanbul, Turkey">
+    
+    <meta name="author" content="INOVI TECH">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#020617">
+
+    <!-- === OPEN GRAPH (Sosyal Medya Kartları) === -->
+    <meta property="og:title" content="INOVI TECH | Digital Architects">
+    <meta property="og:description" content="Moleküler düzeyden dijital dünyaya uzanan teknoloji yolculuğu. | A journey from molecular level to the digital world.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://inovitechh.github.io/webpage/">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1200&auto=format&fit=crop">
+
+    <!-- === YAPAY ZEKA KİMLİK KARTI (Structured Data - JSON-LD) === -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "INOVI TECH",
+      "image": "https://inovitechh.github.io/webpage/logo.png",
+      "description": "Global software and cyber security company providing AI-driven solutions.",
+      "knowsLanguage": ["tr-TR", "en-US"],
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "TR",
+        "addressRegion": "İstanbul"
+      },
+      "url": "https://inovitechh.github.io/webpage/",
+      "priceRange": "$$",
+      "sameAs": [
+        "https://github.com/inovitechh",
+        "https://www.youtube.com/channel/UCPanzHFKR3F2mlL31Pg57Lg"
+      ]
+    }
+    </script>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide İkonları -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Google Fontları -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        green: { 500: '#22c55e', 400: '#4ade80' },
+                        slate: { 900: '#0f172a', 950: '#020617' }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    animation: {
+                        'marquee-left': 'marqueeLeft 60s linear infinite',
+                        'marquee-right': 'marqueeRight 60s linear infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        marqueeLeft: {
+                            '0%': { transform: 'translateX(0)' },
+                            '100%': { transform: 'translateX(-50%)' },
+                        },
+                        marqueeRight: {
+                            '0%': { transform: 'translateX(-50%)' },
+                            '100%': { transform: 'translateX(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Global Reset & Scrollbar */
+        html, body { overflow-x: hidden; scroll-behavior: smooth; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #020617; }
+        ::-webkit-scrollbar-thumb { background: #22c55e; border-radius: 4px; }
+        
+        /* Dil Butonu */
+        .lang-btn {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: 1px solid rgba(34, 197, 94, 0.2);
+        }
+        .lang-btn.active {
+            background-color: #22c55e;
+            color: black;
+            border-color: #22c55e;
+        }
+        .lang-btn:hover:not(.active) {
+            border-color: #22c55e;
+            color: #22c55e;
+        }
+
+        /* Tech Card Stili */
+        .tech-card {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 2rem;
+            margin-right: 2rem;
+            border-radius: 9999px;
+            background-color: #0f172a;
+            border: 1px solid rgba(34, 197, 94, 0.2);
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            color: #cbd5e1;
+            white-space: nowrap;
+            user-select: none;
+            transition: all 0.3s ease;
+        }
+        .tech-card:hover {
+            border-color: #22c55e;
+            box-shadow: 0 0 15px rgba(34, 197, 94, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* Marquee Yapısı */
+        .marquee-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+            padding: 1.5rem 0;
+            background: rgba(2, 6, 23, 0.8);
+            border-top: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .marquee-content {
+            display: inline-block;
+            white-space: nowrap;
+            will-change: transform;
+        }
+
+        /* Reveal Animasyonu */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 1s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        
+        /* Glitch */
+        .glitch-wrapper { position: relative; display: inline-block; }
+    </style>
+</head>
+<body class="bg-[#020617] text-white selection:bg-green-500 selection:text-black">
+
+    <!-- Matrix Arkaplan -->
+    <canvas id="matrix" class="fixed top-0 left-0 w-full h-full opacity-20 pointer-events-none z-0"></canvas>
+
+    <!-- Navbar -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-6 bg-[#020617]/80 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            <!-- Logo -->
+            <div class="text-2xl font-black tracking-tighter flex items-center gap-2 uppercase cursor-pointer group select-none">
+                <i data-lucide="shield" class="w-8 h-8 text-green-500 group-hover:animate-pulse"></i>
+                <span class="tracking-widest">INOVI<span class="text-green-500">TECH</span></span>
+            </div>
+            
+            <!-- Desktop Menü -->
+            <div class="hidden md:flex items-center gap-8">
+                <div class="flex gap-8 text-sm font-mono text-slate-400 font-bold uppercase tracking-wider">
+                    <a href="#hero" class="hover:text-green-400 transition-colors" data-i18n="nav_home">Ana Sayfa</a>
+                    <a href="#services" class="hover:text-green-400 transition-colors" data-i18n="nav_solutions">Çözümler</a>
+                    <a href="thermomix.html" class="hover:text-green-400 transition-colors">  <span>Thermomix</span>
+</a>
+                    <a href="#contact" class="hover:text-green-400 transition-colors" data-i18n="nav_contact">İletişim</a>
+                </div>
+                
+                <!-- Dil Seçici -->
+                <div class="flex gap-2 text-xs">
+                    <button class="lang-btn active" onclick="setLanguage('tr')" id="btn-tr">TR</button>
+                    <button class="lang-btn" onclick="setLanguage('en')" id="btn-en">EN</button>
+                </div>
+            </div>
+            
+            <!-- Mobil Menü Butonu -->
+            <button id="menuBtn" class="md:hidden text-white"><i data-lucide="menu"></i></button>
+        </div>
+    </nav>
+
+    <!-- Mobil Menü -->
+    <div id="mobileMenu" class="fixed inset-0 bg-[#020617] z-50 flex-col items-center justify-center gap-8 text-2xl font-black uppercase hidden">
+        <button id="closeMenuBtn" class="absolute top-6 right-6 p-2"><i data-lucide="x"></i></button>
+        <a href="#hero" class="text-white hover:text-green-500 mobile-link" data-i18n="nav_home">Ana Sayfa</a>
+        <a href="#services" class="text-white hover:text-green-500 mobile-link" data-i18n="nav_solutions">Çözümler</a>
+        <a href="thermomix.html" class="text-green-400 hover:text-green-300 mobile-link">Thermomix</a>
+        <a href="#contact" class="text-white hover:text-green-500 mobile-link" data-i18n="nav_contact">İletişim</a>
+        
+        <!-- Mobil Dil Seçici -->
+        <div class="flex gap-4 mt-8">
+            <button class="lang-btn text-xl active" onclick="setLanguage('tr')" id="mobile-btn-tr">TR</button>
+            <button class="lang-btn text-xl" onclick="setLanguage('en')" id="mobile-btn-en">EN</button>
+        </div>
+    </div>
+
+    <!-- Hero Bölümü -->
+    <section id="hero" class="relative pt-40 pb-20 px-6 min-h-screen flex flex-col justify-center items-center text-center">
+        
+        <div class="reveal inline-flex items-center gap-3 px-6 py-2 rounded-full border border-green-500/30 bg-green-500/10 text-xs sm:text-sm font-mono text-green-400 mb-8 uppercase font-bold tracking-wider hover:bg-green-500/20 transition-all cursor-crosshair">
+            <i data-lucide="atom" class="w-4 h-4"></i>
+            <span class="animate-pulse" data-i18n="hero_badge">Moleküler Düzeyden Dijitale</span>
+        </div>
+        
+        <h1 class="reveal text-5xl sm:text-7xl md:text-8xl font-black tracking-tighter leading-[1] uppercase mb-6 select-none group max-w-5xl">
+            <span class="block text-white mb-2" data-i18n="hero_title_1">Geleceğin</span>
+            <span class="block text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-emerald-500 to-blue-600 pb-2" data-i18n="hero_title_2">
+                Dijital Mimarları
+            </span>
+        </h1>
+        
+        <p class="reveal max-w-2xl mx-auto text-slate-400 text-lg md:text-xl leading-relaxed font-mono mb-12">
+            <span class="text-green-400 font-bold">&gt;</span> <span data-i18n="hero_desc">Teknoloji ve inovasyonun kesişim noktasında, moleküler düzeyden dijital dünyaya uzanan bir yolculuk tasarlıyoruz.</span>
+        </p>
+
+        <div class="reveal flex flex-col items-center gap-8">
+            
+            <!-- Üst Sıra: Proje Başlat & GitHub -->
+            <div class="flex flex-col sm:flex-row gap-6 items-center justify-center">
+                <a href="mailto:bizimleiletisin@gmail.com" class="group relative inline-flex items-center justify-center overflow-hidden rounded-full bg-green-500 px-10 py-4 font-bold text-black transition-all hover:scale-105 hover:shadow-[0_0_30px_rgba(34,197,94,0.4)]">
+                    <span class="relative uppercase tracking-wider flex items-center gap-2">
+                        <span data-i18n="cta_start">Projeyi Başlat</span> <i data-lucide="zap" class="w-5 h-5 fill-black"></i>
+                    </span>
+                </a>
+                
+                <a href="https://github.com/inovitechh" target="_blank" class="group flex items-center gap-2 text-slate-400 hover:text-white transition-colors uppercase font-bold text-sm tracking-widest border-b border-transparent hover:border-white pb-1">
+                    <i data-lucide="github" class="w-5 h-5"></i> GitHub
+                </a>
+            </div>
+
+            <!-- Alt Sıra: YouTube Butonu (Kırmızı Stil) -->
+            <a href="https://www.youtube.com/channel/UCPanzHFKR3F2mlL31Pg57Lg" target="_blank" class="group relative inline-flex items-center justify-center overflow-hidden rounded-full bg-red-600 px-12 py-3 font-bold text-white transition-all hover:scale-105 hover:shadow-[0_0_30px_rgba(220,38,38,0.4)] border border-red-500/50">
+                <span class="relative uppercase tracking-wider flex items-center gap-2">
+                    <span data-i18n="hero_youtube">Kanalı İzle</span> <i data-lucide="youtube" class="w-5 h-5 fill-white"></i>
+                </span>
+            </a>
+
+        </div>
+    </section>
+
+    <!-- Kayan Şeritler (Scroll Velocity) -->
+    <section class="py-20 bg-[#020617] overflow-hidden">
+        <div class="-rotate-2 scale-105">
+            
+            <!-- SOLA KAYAN -->
+            <div class="marquee-container mb-6">
+                <div class="marquee-content animate-marquee-left">
+                    <!-- 4x tekrar for smooth loop -->
+                    <!-- Set 1 -->
+                    <span class="tech-card">Windows <i data-lucide="monitor" class="inline w-4 h-4 ml-2 text-green-500"></i></span>
+                    <span class="tech-card">iOS <i data-lucide="smartphone" class="inline w-4 h-4 ml-2 text-green-500"></i></span>
+                    <span class="tech-card">Android <i data-lucide="tablet-smartphone" class="inline w-4 h-4 ml-2 text-green-500"></i></span>
+                    <span class="tech-card">Linux <i data-lucide="terminal" class="inline w-4 h-4 ml-2 text-green-500"></i></span>
+                    <span class="tech-card">Cyber Security <i data-lucide="shield" class="inline w-4 h-4 ml-2 text-green-500"></i></span>
+                    <span class="tech-card">AI Core <i data-lucide="brain" class="inline w-4 h-4 ml-2 text-green-500"></i></span>
+                    <!-- Set 2 -->
+                    <span class="tech-card">Windows <i data-lucide="monitor" class="inline w-4 h-4 ml-2 text-green-500"></i></span>
+                    <span class="tech-card">iOS <i data-lucide="smartphone" class="inline w-4 h-4 ml-2 text-green-500"></i></span>
+                    <span class="tech-card">Android <i data-lucide="tablet-smartphone" class="inline w-4 h-4 ml-2 text-green-500"></i></span>
+                    <span class="tech-card">Linux <i data-lucide="terminal" class="inline w-4 h-4 ml-2 text-green-500"></i></span>
+                    <span class="tech-card">Cyber Security <i data-lucide="shield" class="inline w-4 h-4 ml-2 text-green-500"></i></span>
+                    <span class="tech-card">AI Core <i data-lucide="brain" class="inline w-4 h-4 ml-2 text-green-500"></i></span>
+                    <!-- Set 3 -->
+                    <span class="tech-card">Windows <i data-lucide="monitor" class="inline w-4 h-4 ml-2 text-green-500"></i></span>
+                    <span class="tech-card">iOS <i data-lucide="smartphone" class="inline w-4 h-4 ml-2 text-green-500"></i></span>
+                    <span class="tech-card">Android <i data-lucide="tablet-smartphone" class="inline w-4 h-4 ml-2 text-green-500"></i></span>
+                    <span class="tech-card">Linux <i data-lucide="terminal" class="inline w-4 h-4 ml-2 text-green-500"></i></span>
+                    <span class="tech-card">Cyber Security <i data-lucide="shield" class="inline w-4 h-4 ml-2 text-green-500"></i></span>
+                    <span class="tech-card">AI Core <i data-lucide="brain" class="inline w-4 h-4 ml-2 text-green-500"></i></span>
+                    <!-- Set 4 -->
+                    <span class="tech-card">Windows <i data-lucide="monitor" class="inline w-4 h-4 ml-2 text-green-500"></i></span>
+                    <span class="tech-card">iOS <i data-lucide="smartphone" class="inline w-4 h-4 ml-2 text-green-500"></i></span>
+                    <span class="tech-card">Android <i data-lucide="tablet-smartphone" class="inline w-4 h-4 ml-2 text-green-500"></i></span>
+                    <span class="tech-card">Linux <i data-lucide="terminal" class="inline w-4 h-4 ml-2 text-green-500"></i></span>
+                    <span class="tech-card">Cyber Security <i data-lucide="shield" class="inline w-4 h-4 ml-2 text-green-500"></i></span>
+                    <span class="tech-card">AI Core <i data-lucide="brain" class="inline w-4 h-4 ml-2 text-green-500"></i></span>
+                </div>
+            </div>
+
+            <!-- SAĞA KAYAN -->
+            <div class="marquee-container">
+                <div class="marquee-content animate-marquee-right">
+                    <!-- Set 1 -->
+                    <span class="tech-card" data-i18n="marquee_infra">Kurumsal Altyapı <i data-lucide="building" class="inline w-4 h-4 ml-2 text-green-500"></i></span>
+                    <span class="tech-card" data-i18n="marquee_data">Veri Analizi <i data-lucide="bar-chart-3" class="inline w-4 h-4 ml-2 text-green-500"></i></span>
+                    <span class="tech-card" data-i18n="marquee_soft">Özel Yazılım <i data-lucide="code" class="inline w-4 h-4 ml-2 text-green-500"></i></span>
+                    <span class="tech-card">Penetration Testing <i data-lucide="lock" class="inline w-4 h-4 ml-2 text-green-500"></i></span>
+                    <span class="tech-card" data-i18n="marquee_innov">İnovasyon <i data-lucide="lightbulb" class="inline w-4 h-4 ml-2 text-green-500"></i></span>
+                    <span class="tech-card">DevSecOps <i data-lucide="server" class="inline w-4 h-4 ml-2 text-green-500"></i></span>
+                    <!-- Set 2 -->
+                    <span class="tech-card" data-i18n="marquee_infra">Kurumsal Altyapı <i data-lucide="building" class="inline w-4 h-4 ml-2 text-green-500"></i></span>
+                    <span class="tech-card" data-i18n="marquee_data">Veri Analizi <i data-lucide="bar-chart-3" class="inline w-4 h-4 ml-2 text-green-500"></i></span>
+                    <span class="tech-card" data-i18n="marquee_soft">Özel Yazılım <i data-lucide="code" class="inline w-4 h-4 ml-2 text-green-500"></i></span>
+                    <span class="tech-card">Penetration Testing <i data-lucide="lock" class="inline w-4 h-4 ml-2 text-green-500"></i></span>
+                    <span class="tech-card" data-i18n="marquee_innov">İnovasyon <i data-lucide="lightbulb" class="inline w-4 h-4 ml-2 text-green-500"></i></span>
+                    <span class="tech-card">DevSecOps <i data-lucide="server" class="inline w-4 h-4 ml-2 text-green-500"></i></span>
+                    <!-- Set 3 -->
+                    <span class="tech-card" data-i18n="marquee_infra">Kurumsal Altyapı <i data-lucide="building" class="inline w-4 h-4 ml-2 text-green-500"></i></span>
+                    <span class="tech-card" data-i18n="marquee_data">Veri Analizi <i data-lucide="bar-chart-3" class="inline w-4 h-4 ml-2 text-green-500"></i></span>
+                    <span class="tech-card" data-i18n="marquee_soft">Özel Yazılım <i data-lucide="code" class="inline w-4 h-4 ml-2 text-green-500"></i></span>
+                    <span class="tech-card">Penetration Testing <i data-lucide="lock" class="inline w-4 h-4 ml-2 text-green-500"></i></span>
+                    <span class="tech-card" data-i18n="marquee_innov">İnovasyon <i data-lucide="lightbulb" class="inline w-4 h-4 ml-2 text-green-500"></i></span>
+                    <span class="tech-card">DevSecOps <i data-lucide="server" class="inline w-4 h-4 ml-2 text-green-500"></i></span>
+                    <!-- Set 4 -->
+                    <span class="tech-card" data-i18n="marquee_infra">Kurumsal Altyapı <i data-lucide="building" class="inline w-4 h-4 ml-2 text-green-500"></i></span>
+                    <span class="tech-card" data-i18n="marquee_data">Veri Analizi <i data-lucide="bar-chart-3" class="inline w-4 h-4 ml-2 text-green-500"></i></span>
+                    <span class="tech-card" data-i18n="marquee_soft">Özel Yazılım <i data-lucide="code" class="inline w-4 h-4 ml-2 text-green-500"></i></span>
+                    <span class="tech-card">Penetration Testing <i data-lucide="lock" class="inline w-4 h-4 ml-2 text-green-500"></i></span>
+                    <span class="tech-card" data-i18n="marquee_innov">İnovasyon <i data-lucide="lightbulb" class="inline w-4 h-4 ml-2 text-green-500"></i></span>
+                    <span class="tech-card">DevSecOps <i data-lucide="server" class="inline w-4 h-4 ml-2 text-green-500"></i></span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Hizmetler Grid -->
+    <section id="services" class="px-6 max-w-7xl mx-auto py-32">
+        <div class="reveal flex flex-col md:flex-row justify-between items-end mb-16 gap-4">
+            <h2 class="text-5xl md:text-7xl font-black uppercase tracking-tighter text-white leading-none">
+                <span data-i18n="services_title_1">Hizmet</span><br />
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-blue-500" data-i18n="services_title_2">Protokolleri.</span>
+            </h2>
+            <p class="text-slate-400 font-mono text-sm max-w-xs text-right hidden md:block border-r-2 border-green-500 pr-4">
+                <span data-i18n="services_sub_1">// MOLEKÜLER DÜZEY</span><br/>
+                <span data-i18n="services_sub_2">// DİJİTAL DÜNYA</span>
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            
+            <!-- Kart 1: Multi-Platform -->
+            <div class="reveal md:col-span-2 group relative overflow-hidden rounded-3xl border border-[#1e293b] bg-gradient-to-br from-[#0f172a] to-[#0b1121] p-8 shadow-[0_0_30px_rgba(34,197,94,0.05)] hover:border-green-500/50 hover:shadow-[0_0_50px_rgba(34,197,94,0.15)] transition-all">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="p-3 rounded-xl bg-green-500/10 text-green-400">
+                        <i data-lucide="layers" class="w-8 h-8"></i>
+                    </div>
+                    <i data-lucide="arrow-up-right" class="w-6 h-6 text-slate-600 group-hover:text-green-400"></i>
+                </div>
+                <h3 class="text-3xl font-black text-white mt-4 uppercase mb-4" data-i18n="card_1_title">Multi-Platform Uygulamalar</h3>
+                <p class="text-slate-400 font-mono text-sm leading-relaxed" data-i18n="card_1_desc">
+                    Windows, Android, iOS ve Linux sistemlerinde çalışan bütünleşik yazılım çözümleri. Tek kod tabanından tüm evrene ulaşan mimari.
+                </p>
+            </div>
+
+            <!-- Kart 2: Yapay Zeka -->
+            <div class="reveal md:col-span-1 group relative overflow-hidden rounded-3xl border border-[#1e293b] bg-[#0f172a] p-8 hover:border-blue-500/50 transition-all">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="p-3 rounded-xl bg-[#172033] text-slate-400 group-hover:text-blue-400">
+                        <i data-lucide="brain" class="w-8 h-8"></i>
+                    </div>
+                    <i data-lucide="arrow-up-right" class="w-6 h-6 text-slate-600 group-hover:text-white"></i>
+                </div>
+                <h3 class="text-3xl font-black text-white mt-4 uppercase mb-4" data-i18n="card_2_title">Yapay Zeka & Kodlama</h3>
+                <p class="text-slate-400 font-mono text-sm leading-relaxed" data-i18n="card_2_desc">
+                    Modern yazılım dilleri ve yapay zeka destekli geliştirme süreçleri. Veriyi zekaya dönüştüren algoritmalar.
+                </p>
+            </div>
+
+            <!-- Kart 3: Kurumsal Çözümler -->
+            <div class="reveal md:col-span-1 group relative overflow-hidden rounded-3xl border border-[#1e293b] bg-[#0f172a] p-8 hover:border-blue-500/50 transition-all">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="p-3 rounded-xl bg-[#172033] text-slate-400 group-hover:text-blue-400">
+                        <i data-lucide="building" class="w-8 h-8"></i>
+                    </div>
+                    <i data-lucide="arrow-up-right" class="w-6 h-6 text-slate-600 group-hover:text-white"></i>
+                </div>
+                <h3 class="text-3xl font-black text-white mt-4 uppercase mb-4" data-i18n="card_3_title">Kurumsal Çözümler</h3>
+                <p class="text-slate-400 font-mono text-sm leading-relaxed" data-i18n="card_3_desc">
+                    Şirketlere özel teknik altyapı, veri analizi ve özel yazılım mimarisi hizmetleri.
+                </p>
+            </div>
+
+            <!-- Kart 4: Siber Güvenlik -->
+            <div class="reveal md:col-span-2 group relative overflow-hidden rounded-3xl border border-green-500/30 bg-[#0b1121]/90 backdrop-blur-md p-8 hover:border-green-500 transition-all">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="p-3 rounded-xl bg-green-500/20 text-green-400">
+                        <i data-lucide="shield" class="w-8 h-8"></i>
+                    </div>
+                    <i data-lucide="arrow-up-right" class="w-6 h-6 text-green-400"></i>
+                </div>
+                <h3 class="text-3xl font-black text-white mt-4 uppercase mb-4" data-i18n="card_4_title">Aktif Siber Savunma</h3>
+                <p class="text-slate-400 font-mono text-sm leading-relaxed" data-i18n="card_4_desc">
+                    Geliştirdiğimiz tüm sistemler, siber tehditlere karşı "Security by Design" prensibiyle korunur. Sıfır güven mimarisi.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="relative bg-[#000] pt-24 pb-12 px-6 border-t border-green-900/30 overflow-hidden">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 mb-20 relative z-10">
+            <div>
+                <div class="flex items-center gap-2 mb-6 text-green-500 animate-pulse">
+                    <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                    <span class="font-mono text-sm font-bold uppercase tracking-widest" data-i18n="contact_badge">Bağlantı Kur</span>
+                </div>
+                <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-tight mb-8">
+                    <span data-i18n="contact_title_1">Geleceği Birlikte</span><br /><span data-i18n="contact_title_2">Kodlayalım.</span>
+                </h2>
+                <a href="mailto:iletisim@inovitech.pro" class="text-xl md:text-2xl text-slate-300 hover:text-green-400 transition-colors font-mono border-b border-slate-700 hover:border-green-400 pb-2 inline-flex items-center gap-3">
+                    <i data-lucide="mail" class="w-6 h-6"></i> iletisim@inovitech.pro
+                </a>
+            </div>
+
+            <div class="flex flex-col justify-end items-start md:items-end gap-6">
+                <div class="flex gap-4">
+                    <a href="https://github.com/inovitechh" target="_blank" class="p-4 rounded-2xl bg-[#111] border border-white/10 hover:border-green-500 hover:bg-green-500/10 hover:text-green-400 transition-all">
+                        <i data-lucide="github" class="w-6 h-6"></i>
+                    </a>
+                    <a href="https://www.youtube.com/channel/UCPanzHFKR3F2mlL31Pg57Lg" target="_blank" class="p-4 rounded-2xl bg-[#111] border border-white/10 hover:border-red-500 hover:bg-red-500/10 hover:text-red-500 transition-all">
+                        <i data-lucide="youtube" class="w-6 h-6"></i>
+                    </a>
+                </div>
+                <p class="text-slate-500 max-w-xs text-left md:text-right font-mono text-sm">
+                    <span data-i18n="footer_text">Teknoloji, İnovasyon ve Geleceğin Dijital Mimarları.</span><br>
+                    <span data-i18n="footer_location">Türkiye.</span>
+                </p>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center pt-8 border-t border-white/5 gap-4">
+            <div class="text-xl font-black uppercase flex items-center gap-2 select-none">
+                <i data-lucide="shield" class="w-5 h-5 text-green-500"></i> INOVI<span class="text-green-500">TECH</span>
+            </div>
+            <div class="flex gap-6 text-xs font-mono text-slate-600 uppercase font-bold">
+                <span>© 2025 INOVI TECH. ALL RIGHTS RESERVED.</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // 1. ÇEVİRİ VERİTABANI
+        const translations = {
+            tr: {
+                nav_home: "Ana Sayfa",
+                nav_solutions: "Çözümler",
+                nav_contact: "İletişim",
+                hero_badge: "Moleküler Düzeyden Dijitale",
+                hero_title_1: "Geleceğin",
+                hero_title_2: "Dijital Mimarları",
+                hero_desc: "Teknoloji ve inovasyonun kesişim noktasında, moleküler düzeyden dijital dünyaya uzanan bir yolculuk tasarlıyoruz.",
+                cta_start: "Projeyi Başlat",
+                hero_youtube: "Kanalı İzle",
+                marquee_infra: "Kurumsal Altyapı",
+                marquee_data: "Veri Analizi",
+                marquee_soft: "Özel Yazılım",
+                marquee_innov: "İnovasyon",
+                services_title_1: "Hizmet",
+                services_title_2: "Protokolleri.",
+                services_sub_1: "// MOLEKÜLER DÜZEY",
+                services_sub_2: "// DİJİTAL DÜNYA",
+                card_1_title: "Multi-Platform Uygulamalar",
+                card_1_desc: "Windows, Android, iOS ve Linux sistemlerinde çalışan bütünleşik yazılım çözümleri. Tek kod tabanından tüm evrene ulaşan mimari.",
+                card_2_title: "Yapay Zeka & Kodlama",
+                card_2_desc: "Modern yazılım dilleri ve yapay zeka destekli geliştirme süreçleri. Veriyi zekaya dönüştüren algoritmalar.",
+                card_3_title: "Kurumsal Çözümler",
+                card_3_desc: "Şirketlere özel teknik altyapı, veri analizi ve özel yazılım mimarisi hizmetleri.",
+                card_4_title: "Aktif Siber Savunma",
+                card_4_desc: "Geliştirdiğimiz tüm sistemler, siber tehditlere karşı 'Security by Design' prensibiyle korunur. Sıfır güven mimarisi.",
+                contact_badge: "Bağlantı Kur",
+                contact_title_1: "Geleceği Birlikte",
+                contact_title_2: "Kodlayalım.",
+                footer_text: "Teknoloji, İnovasyon ve Geleceğin Dijital Mimarları.",
+                footer_location: "Türkiye."
+            },
+            en: {
+                nav_home: "Home",
+                nav_solutions: "Solutions",
+                nav_contact: "Contact",
+                hero_badge: "From Molecular to Digital",
+                hero_title_1: "Architects of the",
+                hero_title_2: "Digital Future",
+                hero_desc: "We design a journey from the molecular level to the digital world at the intersection of technology and innovation.",
+                cta_start: "Start Project",
+                hero_youtube: "Watch Channel",
+                marquee_infra: "Corporate Infrastructure",
+                marquee_data: "Data Analysis",
+                marquee_soft: "Custom Software",
+                marquee_innov: "Innovation",
+                services_title_1: "Service",
+                services_title_2: "Protocols.",
+                services_sub_1: "// MOLECULAR LEVEL",
+                services_sub_2: "// DIGITAL WORLD",
+                card_1_title: "Multi-Platform Apps",
+                card_1_desc: "Integrated software solutions running on Windows, Android, iOS, and Linux. Architecture reaching the universe from a single codebase.",
+                card_2_title: "AI & Coding",
+                card_2_desc: "Modern programming languages and AI-supported development processes. Algorithms converting data into intelligence.",
+                card_3_title: "Corporate Solutions",
+                card_3_desc: "Tailor-made technical infrastructure, data analysis, and custom software architecture services for companies.",
+                card_4_title: "Active Cyber Defense",
+                card_4_desc: "All our systems are protected against cyber threats with 'Security by Design' principle. Zero trust architecture.",
+                contact_badge: "Connect",
+                contact_title_1: "Let's Code the",
+                contact_title_2: "Future Together.",
+                footer_text: "Technology, Innovation, and Digital Architects of the Future.",
+                footer_location: "Turkey."
+            }
+        };
+
+        // Dil Değiştirme Fonksiyonu
+        function setLanguage(lang) {
+            // Dil tercihini kaydet
+            localStorage.setItem('lang', lang);
+            
+            // Buton stillerini güncelle
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                if(btn.id.includes(lang)) btn.classList.add('active');
+                else btn.classList.remove('active');
+            });
+
+            // Metinleri güncelle
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    el.innerText = translations[lang][key];
+                }
+            });
+        }
+
+        // Sayfa Yüklendiğinde Dil Kontrolü
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('lang') || 'tr'; // Varsayılan TR
+            setLanguage(savedLang);
+        });
+
+        // İkonları Yükle
+        lucide.createIcons();
+
+        // Navbar Scroll Efekti
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('py-4');
+                navbar.classList.remove('py-6');
+            } else {
+                navbar.classList.add('py-6');
+                navbar.classList.remove('py-4');
+            }
+        });
+
+        // Mobil Menü
+        const menuBtn = document.getElementById('menuBtn');
+        const closeMenuBtn = document.getElementById('closeMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        function toggleMenu() {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('flex');
+        }
+
+        menuBtn.addEventListener('click', toggleMenu);
+        closeMenuBtn.addEventListener('click', toggleMenu);
+        mobileLinks.forEach(link => link.addEventListener('click', toggleMenu));
+
+        // Matrix Rain Efekti
+        const canvas = document.getElementById('matrix');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const chars = "01010101INOVITECHCYBERSECURITYX";
+        const drops = [];
+        const fontSize = 14;
+        const columns = canvas.width / fontSize;
+
+        for (let i = 0; i < columns; i++) drops[i] = 1;
+
+        function drawMatrix() {
+            ctx.fillStyle = 'rgba(2, 6, 23, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = '#0ea5e9'; 
+            ctx.font = fontSize + 'px monospace';
+
+            for (let i = 0; i < drops.length; i++) {
+                const text = chars.charAt(Math.floor(Math.random() * chars.length));
+                if (Math.random() > 0.98) ctx.fillStyle = '#22c55e';
+                else ctx.fillStyle = '#0ea5e9';
+
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+        }
+        setInterval(drawMatrix, 50);
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        // Reveal on Scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>

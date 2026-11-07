@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="tr" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INOVI TECH | Thermomix Danışmanlığı & Dijital Mutfak</title>
+    <meta name="description" content="INOVI TECH güvencesiyle Thermomix resmi danışmanlığı, canlı demo, tarif mentorluğu ve profesyonel mutfak teknolojisi.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide İkonları -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            green: '#22c55e',
+                            greenDark: '#16a34a',
+                            dark: '#020617',
+                            cardDark: '#0f172a',
+                            cardLight: '#ffffff'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        html, body { overflow-x: hidden; scroll-behavior: smooth; }
+        .parallax-card {
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            transition: transform 0.15s ease-out, box-shadow 0.2s ease;
+        }
+        .parallax-inner {
+            transform: translateZ(30px);
+        }
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body class="bg-[#f8fafc] text-slate-900 dark:bg-[#020617] dark:text-white transition-colors duration-300 selection:bg-brand-green selection:text-black">
+
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 py-5 bg-white/80 dark:bg-[#020617]/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-colors">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            
+            <a href="index.html" class="flex items-center gap-2 text-xl sm:text-2xl font-black uppercase tracking-tighter">
+                <i data-lucide="shield" class="w-7 h-7 text-brand-green"></i>
+                <span class="tracking-widest">INOVI<span class="text-brand-green">TECH</span></span>
+                <span class="text-xs px-2 py-0.5 rounded bg-brand-green/10 text-brand-green font-mono border border-brand-green/30 ml-2 hidden sm:inline-block">TM STUDIO</span>
+            </a>
+
+            <!-- Sağ Aksiyonlar -->
+            <div class="flex items-center gap-4 sm:gap-6">
+                <a href="index.html" class="text-xs sm:text-sm font-mono font-bold uppercase text-slate-500 hover:text-brand-green dark:text-slate-400 dark:hover:text-brand-green transition-colors hidden md:block" data-i18n="nav_back">
+                    &larr; Ana Sayfa
+                </a>
+
+                <!-- Tema Değiştirici -->
+                <button id="themeToggle" class="p-2.5 rounded-xl border border-slate-300 dark:border-slate-800 bg-slate-100 dark:bg-slate-900 text-slate-700 dark:text-slate-200 hover:border-brand-green transition-all" aria-label="Tema">
+                    <i data-lucide="sun" id="sunIcon" class="w-4 h-4 hidden dark:block"></i>
+                    <i data-lucide="moon" id="moonIcon" class="w-4 h-4 block dark:hidden"></i>
+                </button>
+
+                <!-- Dil Butonları -->
+                <div class="flex gap-1 text-xs font-mono">
+                    <button onclick="setLang('tr')" id="btn-tr" class="px-3 py-1.5 rounded-lg border font-bold border-brand-green bg-brand-green text-black transition-all">TR</button>
+                    <button onclick="setLang('en')" id="btn-en" class="px-3 py-1.5 rounded-lg border font-bold border-slate-300 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:border-brand-green transition-all">EN</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Bölümü -->
+    <section class="relative pt-36 pb-20 px-6 min-h-screen flex items-center justify-center overflow-hidden">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            <div class="lg:col-span-7 text-center lg:text-left reveal">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-green/30 bg-brand-green/10 text-brand-green font-mono text-xs uppercase font-bold tracking-wider mb-6">
+                    <i data-lucide="sparkles" class="w-4 h-4"></i>
+                    <span data-i18n="hero_badge">Resmi Danışmanlık & Dijital Mutfak Mimarisi</span>
+                </div>
+
+                <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black uppercase tracking-tight leading-[1.05] mb-6">
+                    <span class="block" data-i18n="hero_h1_1">Geleceğin Lezzetini</span>
+                    <span class="block text-transparent bg-clip-text bg-gradient-to-r from-brand-green via-emerald-500 to-teal-400" data-i18n="hero_h1_2">Tek Dokunuşla Yönetin</span>
+                </h1>
+
+                <p class="font-mono text-slate-600 dark:text-slate-400 text-base sm:text-lg mb-8 max-w-xl leading-relaxed" data-i18n="hero_desc">
+                    Mutfakta mühendislik hassasiyeti: Birebir Thermomix danışmanlığı, online/yüz yüze demo seansları ve satış sonrası kesintisiz tarif mentörlüğü.
+                </p>
+
+                <!-- CTA Butonları -->
+                <div class="flex flex-wrap gap-4 justify-center lg:justify-start items-center">
+                    <a href="https://wa.me/905541403571?text=Merhaba,%20Thermomix%20hakk%C4%B1nda%20bilgi%20ve%20demo%20randevusu%20almak%20istiyorum." target="_blank" class="inline-flex items-center gap-3 bg-brand-green hover:bg-brand-greenDark text-black font-bold px-8 py-4 rounded-2xl shadow-lg shadow-brand-green/20 hover:scale-105 transition-all">
+                        <i data-lucide="message-circle" class="w-5 h-5 fill-black"></i>
+                        <span data-i18n="btn_demo">Canlı Demo Randevusu Al</span>
+                    </a>
+                    <a href="tel:+905541403571" class="inline-flex items-center gap-2 border border-slate-300 dark:border-slate-800 hover:border-brand-green px-6 py-4 rounded-2xl font-mono text-sm font-bold transition-all">
+                        <i data-lucide="phone-call" class="w-4 h-4 text-brand-green"></i>
+                        <span>+90 554 140 35 71</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Parallax 3D Hero Kartı -->
+            <div class="lg:col-span-5 flex justify-center reveal">
+                <div class="parallax-card relative w-full max-w-md rounded-3xl p-4 bg-gradient-to-b from-slate-100 to-slate-200 dark:from-slate-900 dark:to-slate-950 border border-slate-200 dark:border-slate-800 shadow-2xl">
+                    <div class="parallax-inner relative overflow-hidden rounded-2xl">
+                        <img src="assets/tm7-hero.png" alt="Thermomix Yeni Nesil Akıllı Mutfak" class="w-full h-auto object-cover rounded-2xl scale-100 hover:scale-105 transition-transform duration-500">
+                        <div class="absolute bottom-4 left-4 right-4 bg-black/70 backdrop-blur-md p-4 rounded-xl border border-white/10 text-white">
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <p class="text-xs font-mono text-brand-green font-bold uppercase tracking-wider" data-i18n="badge_consult">Yetkili Danışman</p>
+                                    <h4 class="text-sm font-bold uppercase tracking-wide">INOVI TECH</h4>
+                                </div>
+                                <span class="text-xs px-2.5 py-1 rounded bg-brand-green text-black font-mono font-bold">100+ Mod</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Danışmanlık Avantajları Grid -->
+    <section class="py-24 px-6 border-t border-slate-200 dark:border-slate-800/80 bg-slate-50/50 dark:bg-[#060c1c]/50">
+        <div class="max-w-7xl mx-auto">
+            
+            <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+                <h2 class="text-3xl sm:text-5xl font-black uppercase tracking-tight mb-4" data-i18n="sec_why_title">Neden Birlikte Çalışmalıyız?</h2>
+                <p class="font-mono text-slate-500 dark:text-slate-400 text-sm" data-i18n="sec_why_sub">Thermomix sadece bir cihaz değil, mutfağınızın yeni işletim sistemidir. Doğru rehberlikle tam kapasite kullanın.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- 1 -->
+                <div class="reveal p-8 rounded-3xl bg-white dark:bg-brand-cardDark border border-slate-200 dark:border-slate-800 shadow-sm hover:border-brand-green/50 transition-all">
+                    <div class="w-12 h-12 rounded-2xl bg-brand-green/10 text-brand-green flex items-center justify-center mb-6">
+                        <i data-lucide="video" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold uppercase mb-3" data-i18n="card1_t">Birebir Canlı Demo</h3>
+                    <p class="font-mono text-sm text-slate-500 dark:text-slate-400 leading-relaxed" data-i18n="card1_d">
+                        Satın almadan önce mutfağınızda veya online bağlantı ile tüm fonksiyonları canlı inceleyin, sorularınıza anında yanıt alın.
+                    </p>
+                </div>
+
+                <!-- 2 -->
+                <div class="reveal p-8 rounded-3xl bg-white dark:bg-brand-cardDark border border-slate-200 dark:border-slate-800 shadow-sm hover:border-brand-green/50 transition-all">
+                    <div class="w-12 h-12 rounded-2xl bg-brand-green/10 text-brand-green flex items-center justify-center mb-6">
+                        <i data-lucide="book-open" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold uppercase mb-3" data-i18n="card2_t">Cookidoo & Tarif Koçluğu</h3>
+                    <p class="font-mono text-sm text-slate-500 dark:text-slate-400 leading-relaxed" data-i18n="card2_d">
+                        100.000'den fazla rehberli tarifi ve haftalık menü planlamasını yaşam tarzınıza göre özelleştirmeniz için rehberlik ediyoruz.
+                    </p>
+                </div>
+
+                <!-- 3 -->
+                <div class="reveal p-8 rounded-3xl bg-white dark:bg-brand-cardDark border border-slate-200 dark:border-slate-800 shadow-sm hover:border-brand-green/50 transition-all">
+                    <div class="w-12 h-12 rounded-2xl bg-brand-green/10 text-brand-green flex items-center justify-center mb-6">
+                        <i data-lucide="headphones" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold uppercase mb-3" data-i18n="card3_t">Süresiz Satış Sonrası Destek</h3>
+                    <p class="font-mono text-sm text-slate-500 dark:text-slate-400 leading-relaxed" data-i18n="card3_d">
+                        Cihaz tesliminden sonra kurulum, püf noktalar ve özel teknik destek süreçlerinde doğrudan kişisel danışmanınız yanınızda.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Parallax Görsel Galeri & Yetenekler -->
+    <section class="py-24 px-6">
+        <div class="max-w-7xl mx-auto">
+            
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6 reveal">
+                <div>
+                    <span class="text-xs font-mono font-bold text-brand-green uppercase tracking-widest" data-i18n="gal_sub">Donanım & Yazılım Entegrasyonu</span>
+                    <h2 class="text-3xl sm:text-5xl font-black uppercase tracking-tight mt-2" data-i18n="gal_title">Çok Yönlü Gastronomi Gücü</h2>
+                </div>
+                <div class="font-mono text-xs text-slate-500 dark:text-slate-400 border-l-2 border-brand-green pl-4">
+                    // 120°C HASSAS ISITMA<br>
+                    // 10.700 RPM MOTOR GÜCÜ
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Kart 1 (1.png) -->
+                <div class="parallax-card rounded-3xl overflow-hidden bg-white dark:bg-brand-cardDark border border-slate-200 dark:border-slate-800 shadow-md reveal">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="assets/1.png" alt="Cookidoo Arayüzü" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs font-mono text-brand-green font-bold uppercase" data-i18n="feat1_badge">Dokunmatik Ekran</span>
+                        <h4 class="text-lg font-bold uppercase mt-1 mb-2" data-i18n="feat1_h">Adım Adım Rehberli Pişirme</h4>
+                        <p class="font-mono text-xs text-slate-500 dark:text-slate-400" data-i18n="feat1_d">En karmaşık lezzetleri bile ekrandaki tartım ve süre talimatlarıyla hatasız hazırlayın.</p>
+                    </div>
+                </div>
+
+                <!-- Kart 2 (2.png) -->
+                <div class="parallax-card rounded-3xl overflow-hidden bg-white dark:bg-brand-cardDark border border-slate-200 dark:border-slate-800 shadow-md reveal">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="assets/2.png" alt="Hamur Yoğurma" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs font-mono text-brand-green font-bold uppercase" data-i18n="feat2_badge">Güç & Hassasiyet</span>
+                        <h4 class="text-lg font-bold uppercase mt-1 mb-2" data-i18n="feat2_h">Profesyonel Hamur Yoğurma</h4>
+                        <p class="font-mono text-xs text-slate-500 dark:text-slate-400" data-i18n="feat2_d">Geleneksel fırıncı ustası kıvamında ekşi mayalı ekmekler ve özel hamur işleri dakikalar içinde.</p>
+                    </div>
+                </div>
+
+                <!-- Kart 3 (4.png) -->
+                <div class="parallax-card rounded-3xl overflow-hidden bg-white dark:bg-brand-cardDark border border-slate-200 dark:border-slate-800 shadow-md reveal">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="assets/4.png" alt="Varoma Buharda Pişirme" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs font-mono text-brand-green font-bold uppercase" data-i18n="feat3_badge">Çok Katmanlı</span>
+                        <h4 class="text-lg font-bold uppercase mt-1 mb-2" data-i18n="feat3_h">Varoma ile Sağlıklı Buhar</h4>
+                        <p class="font-mono text-xs text-slate-500 dark:text-slate-400" data-i18n="feat3_d">Besin değerlerini kaybetmeden aynı anda sebze, balık ve garnitürleri senkronize pişirin.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- İletişim & Danışmanlık Çağrısı (CTA) -->
+    <section class="py-20 px-6 bg-slate-900 text-white relative overflow-hidden">
+        <div class="max-w-5xl mx-auto text-center relative z-10 reveal">
+            <span class="font-mono text-xs font-bold text-brand-green uppercase tracking-widest" data-i18n="cta_call">Doğrudan İletişim Hattı</span>
+            <h2 class="text-3xl sm:text-5xl font-black uppercase tracking-tight mt-3 mb-6" data-i18n="cta_h2">
+                Thermomix Deneyimini Başlatın
+            </h2>
+            <p class="font-mono text-slate-300 text-sm sm:text-base max-w-2xl mx-auto mb-10" data-i18n="cta_p">
+                Kampanyalar, resmi garanti avantajları ve ücretsiz canlı demo için yetkili danışman hattımızla 7/24 iletişime geçebilirsiniz.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-6 font-mono text-sm">
+                <a href="tel:+905541403571" class="w-full sm:w-auto flex items-center justify-center gap-3 bg-white text-slate-900 hover:bg-slate-100 font-bold px-8 py-4 rounded-2xl transition-all">
+                    <i data-lucide="phone" class="w-4 h-4 text-brand-green"></i>
+                    <span>+90 554 140 35 71</span>
+                </a>
+                <a href="mailto:bizimleiletisin@gmail.com" class="w-full sm:w-auto flex items-center justify-center gap-3 bg-slate-800 hover:bg-slate-700 border border-slate-700 px-8 py-4 rounded-2xl font-bold transition-all">
+                    <i data-lucide="mail" class="w-4 h-4 text-brand-green"></i>
+                    <span>bizimleiletisin@gmail.com</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 px-6 border-t border-slate-200 dark:border-slate-800 text-center font-mono text-xs text-slate-500 dark:text-slate-400">
+        <p>© 2026 INOVI TECH. Thermomix Resmi Danışmanlık Hizmetleri.</p>
+    </footer>
+
+    <!-- Scriptler: Dil, Tema ve Parallax Tilt -->
+    <script>
+        // 1. Dil Çeviri Tablosu
+        const i18nData = {
+            tr: {
+                nav_back: "← Ana Sayfa",
+                hero_badge: "Resmi Danışmanlık & Dijital Mutfak Mimarisi",
+                hero_h1_1: "Geleceğin Lezzetini",
+                hero_h1_2: "Tek Dokunuşla Yönetin",
+                hero_desc: "Mutfakta mühendislik hassasiyeti: Birebir Thermomix danışmanlığı, online/yüz yüze demo seansları ve satış sonrası kesintisiz tarif mentörlüğü.",
+                btn_demo: "Canlı Demo Randevusu Al",
+                badge_consult: "Yetkili Danışman",
+                sec_why_title: "Neden Birlikte Çalışmalıyız?",
+                sec_why_sub: "Thermomix sadece bir cihaz değil, mutfağınızın yeni işletim sistemidir. Doğru rehberlikle tam kapasite kullanın.",
+                card1_t: "Birebir Canlı Demo",
+                card1_d: "Satın almadan önce mutfağınızda veya online bağlantı ile tüm fonksiyonları canlı inceleyin, sorularınıza anında yanıt alın.",
+                card2_t: "Cookidoo & Tarif Koçluğu",
+                card2_d: "100.000'den fazla rehberli tarifi ve haftalık menü planlamasını yaşam tarzınıza göre özelleştirmeniz için rehberlik ediyoruz.",
+                card3_t: "Süresiz Satış Sonrası Destek",
+                card3_d: "Cihaz tesliminden sonra kurulum, püf noktalar ve özel teknik destek süreçlerinde doğrudan kişisel danışmanınız yanınızda.",
+                gal_sub: "Donanım & Yazılım Entegrasyonu",
+                gal_title: "Çok Yönlü Gastronomi Gücü",
+                feat1_badge: "Dokunmatik Ekran",
+                feat1_h: "Adım Adım Rehberli Pişirme",
+                feat1_d: "En karmaşık lezzetleri bile ekrandaki tartım ve süre talimatlarıyla hatasız hazırlayın.",
+                feat2_badge: "Güç & Hassasiyet",
+                feat2_h: "Profesyonel Hamur Yoğurma",
+                feat2_d: "Geleneksel fırıncı ustası kıvamında ekşi mayalı ekmekler ve özel hamur işleri dakikalar içinde.",
+                feat3_badge: "Çok Katmanlı",
+                feat3_h: "Varoma ile Sağlıklı Buhar",
+                feat3_d: "Besin değerlerini kaybetmeden aynı anda sebze, balık ve garnitürleri senkronize pişirin.",
+                cta_call: "Doğrudan İletişim Hattı",
+                cta_h2: "Thermomix Deneyimini Başlatın",
+                cta_p: "Kampanyalar, resmi garanti avantajları ve ücretsiz canlı demo için yetkili danışman hattımızla 7/24 iletişime geçebilirsiniz."
+            },
+            en: {
+                nav_back: "← Home Page",
+                hero_badge: "Official Advisory & Digital Kitchen Architecture",
+                hero_h1_1: "Master Future Flavors",
+                hero_h1_2: "At a Single Touch",
+                hero_desc: "Engineering precision in the kitchen: Personalized Thermomix advisory, live/online demos, and continuous post-purchase recipe mentoring.",
+                btn_demo: "Book a Live Demo",
+                badge_consult: "Authorized Advisor",
+                sec_why_title: "Why Work With Us?",
+                sec_why_sub: "Thermomix is not just an appliance, it is your kitchen's operating system. Harness its full power with the right guide.",
+                card1_t: "1-on-1 Live Demo",
+                card1_d: "Experience all functions live in your kitchen or online before purchasing, getting immediate answers to your questions.",
+                card2_t: "Cookidoo & Recipe Coaching",
+                card2_d: "Personalized guidance to adapt 100,000+ guided recipes and weekly meal planning to your healthy lifestyle.",
+                card3_t: "Lifetime Post-Sale Support",
+                card3_d: "Your dedicated advisor remains by your side for setup, culinary hacks, and technical guidance after delivery.",
+                gal_sub: "Hardware & Software Integration",
+                gal_title: "Versatile Gastronomy Power",
+                feat1_badge: "Touch Display",
+                feat1_h: "Step-by-Step Guided Cooking",
+                feat1_d: "Prepare gourmet meals effortlessly with guided on-screen weights and exact time calibrations.",
+                feat2_badge: "Power & Precision",
+                feat2_h: "Artisan Dough Kneading",
+                feat2_d: "Craft artisan sourdough breads and delicate pastries with bakery-grade motor precision.",
+                feat3_badge: "Multi-Level",
+                feat3_h: "Healthy Steam with Varoma",
+                feat3_d: "Steam fish, vegetables, and side dishes simultaneously without nutrient depletion.",
+                cta_call: "Direct Hotline",
+                cta_h2: "Start Your Thermomix Journey",
+                cta_p: "Contact our official advisory line 24/7 for campaigns, warranty benefits, and free live demonstrations."
+            }
+        };
+
+        function setLang(lang) {
+            localStorage.setItem('inovi_lang', lang);
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (i18nData[lang][key]) el.innerText = i18nData[lang][key];
+            });
+
+            const btnTr = document.getElementById('btn-tr');
+            const btnEn = document.getElementById('btn-en');
+            if (lang === 'tr') {
+                btnTr.className = "px-3 py-1.5 rounded-lg border font-bold border-brand-green bg-brand-green text-black transition-all";
+                btnEn.className = "px-3 py-1.5 rounded-lg border font-bold border-slate-300 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:border-brand-green transition-all";
+            } else {
+                btnEn.className = "px-3 py-1.5 rounded-lg border font-bold border-brand-green bg-brand-green text-black transition-all";
+                btnTr.className = "px-3 py-1.5 rounded-lg border font-bold border-slate-300 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:border-brand-green transition-all";
+            }
+        }
+
+        // 2. Gece / Gündüz Modu Mantığı
+        const themeToggleBtn = document.getElementById('themeToggle');
+        function applyTheme(isDark) {
+            if (isDark) {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('inovi_theme', 'dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('inovi_theme', 'light');
+            }
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            const isCurrentlyDark = document.documentElement.classList.contains('dark');
+            applyTheme(!isCurrentlyDark);
+        });
+
+        // 3. 3D Parallax Tilt Hareketi
+        const cards = document.querySelectorAll('.parallax-card');
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                const rotateX = -(y / (rect.height / 2)) * 8;
+                const rotateY = (x / (rect.width / 2)) * 8;
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+            });
+        });
+
+        // 4. Reveal On Scroll & Başlangıç Ayarları
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            
+            // Kaydedilmiş tema
+            const savedTheme = localStorage.getItem('inovi_theme') || 'dark';
+            applyTheme(savedTheme === 'dark');
+
+            // Kaydedilmiş dil
+            const savedLang = localStorage.getItem('inovi_lang') || 'tr';
+            setLang(savedLang);
+
+            // Scroll Observer
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) entry.target.classList.add('active');
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>
